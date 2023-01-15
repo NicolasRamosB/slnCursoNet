@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using WindowsApp.Entity;
+using WindowsApp.Core.Entity;
 
 namespace WindowsApp
 {
@@ -20,13 +20,13 @@ namespace WindowsApp
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Producto producto= new Producto();
+            Producto producto = new Producto();
 
             producto.Nombre = "Ojota";
             producto.Descripcion = "Ojota sin suela perfecta para la playa";
             producto.PrecioCosto = 12000.30m;
-            producto.Margen = 0.30 ;
-            producto.IVA = 0.21 ;
+            producto.Margen = 0.30;
+            producto.IVA = 0.21;
             producto.Proveedor = "Ojo x Ojota";
             producto.Categoria = "Calzado";
             producto.SubCategoria = "Ojotas";
@@ -45,24 +45,28 @@ namespace WindowsApp
 
         private void button2_Click(object sender, EventArgs e)
         {
-            ClienteIndividuo clienteIndividuo= new ClienteIndividuo();
 
-            clienteIndividuo.Nombre = "Nicolas";
-            clienteIndividuo.Apellido = "Ramos";
-            clienteIndividuo.CUIT = "1234567879";
-            clienteIndividuo.Email = "email@gmail.com";
-            clienteIndividuo.Telefono = "20292209";
-            clienteIndividuo.Direccion = "Av.SiempreViva 123";
+            ClienteIndividuo clienteIndividuo = new ClienteIndividuo(
+            "Nicolas",
+            "1234567879",
+            "email@gmail.com",
+            "20292209",
+            "Av.SiempreViva 123",
+            "3203303003"
+            ); 
+
+            
 
             MessageBox.Show(
-                $"Nombre Completo: {clienteIndividuo.Nombre} {clienteIndividuo.Apellido}" +
-                $"\nCUIT: {clienteIndividuo.CUIT}" +
+                $"Nombre Completo: {clienteIndividuo.Nombre}" +
+                $"\nDNI: {clienteIndividuo.CUIT}" +
                 $"\nEmail: {clienteIndividuo.Email}" +
                 $"\nTelefono: {clienteIndividuo.Telefono}" +
                 $"\nDireccion: {clienteIndividuo.Direccion}" );
 
-
-
         }
+
+
+
     }
 }
