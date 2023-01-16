@@ -32,7 +32,7 @@ namespace WindowsApp.Core.Entity
         public decimal PrecioBruto {
             get
             {
-                //                     Asigancion 
+                 
                 decimal _PrecioBruto = this.PrecioCosto + (this.PrecioCosto * (decimal)this.Margen);
                 return _PrecioBruto;
             }

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsApp.Core.Entity;
+using WindowsApp.Core.Entity.Empresa;
 
 namespace WindowsApp
 {
@@ -31,7 +32,10 @@ namespace WindowsApp
             producto.Categoria = "Calzado";
             producto.SubCategoria = "Ojotas";
 
-            MessageBox.Show($"Nombre: {producto.Nombre}" +
+            MessageBox.Show(
+                            $"----------PRODUCTO--------"+
+
+                            $"\nNombre: {producto.Nombre}" +
                             $"\nDescriopcion: {producto.Descripcion}" +
                             $"\nPrecio: ${(producto.PrecioCosto).ToString()}" +
                             $"\nMargen de Ganacia: {(producto.Margen * 100).ToString()}%" +
@@ -41,32 +45,126 @@ namespace WindowsApp
                             $"\nProveedor: {producto.Proveedor}" +
                             $"\nCategoria: {producto.Categoria}" +
                             $"\nSub Categoria: {producto.SubCategoria}");
+   
         }
 
-        private void button2_Click(object sender, EventArgs e)
+
+
+        private void btnEmpresa_Click(object sender, EventArgs e)
         {
 
-            ClienteIndividuo clienteIndividuo = new ClienteIndividuo(
-            "Nicolas",
-            "1234567879",
-            "email@gmail.com",
-            "20292209",
-            "Av.SiempreViva 123",
-            "3203303003"
-            ); 
-
-            
+            Empresa empresa = new Empresa(
+             "Nicolas",
+             "1234567879",
+             "110100102203",
+             "email@gmail.com",
+             "42433356",
+             "Av.SiempreViva 123"
+             );
 
             MessageBox.Show(
-                $"Nombre Completo: {clienteIndividuo.Nombre}" +
-                $"\nDNI: {clienteIndividuo.CUIT}" +
-                $"\nEmail: {clienteIndividuo.Email}" +
-                $"\nTelefono: {clienteIndividuo.Telefono}" +
-                $"\nDireccion: {clienteIndividuo.Direccion}" );
+                $"----------EMPRESA--------"+
+                $"\nNombre Completo: {empresa.Nombre}" +
+                $"\nCUIT: {empresa.CUIT}" +
+                $"\nContacto: {empresa.Contacto}" +
+                $"\nEmail: {empresa.Email}" +
+                $"\nTelefono: {empresa.Telefono}" +
+                $"\nDireccion: {empresa.Direccion}");
 
         }
 
+        private void btnPersona_Click(object sender, EventArgs e)
+        {
+            Vendedor vendedor = new Vendedor(
+             "Nicolas",
+             "Ramos",
+             "email@gmail.com",
+             "20292209",
+             "Av.SiempreViva 123",
+             "3203303003"
+             );
+
+            MessageBox.Show(
+                "----------VENDEDOR--------" +
+
+                $"\nNombre: {vendedor.Nombre}" +
+                $"\nApellido {vendedor.Apellido}" +
+                $"\nEmail: {vendedor.Email}" +
+                $"\nTelefono: {vendedor.Telefono}" +
+                $"\nDireccion: {vendedor.Direccion}" +
+                $"\nDNI: {vendedor.DNI}"
+                );
+
+            ClienteIndividuo clienteIndividuo = new ClienteIndividuo(
+             "Nicolas",
+             "1234567879",
+             "email@gmail.com",
+             "20292209",
+             "Av.SiempreViva 123",
+             "3203303003"
+             );
+
+            MessageBox.Show($"----------CLIENTE INDIVIDUO--------"+
+                $"\nNombre: {clienteIndividuo.Nombre}" +
+                $"\nApellido: {clienteIndividuo.Apellido}" +
+                $"\nEmail: {clienteIndividuo.Email}" +
+                $"\nTelefono: {clienteIndividuo.Telefono}" +
+                $"\nDireccion: {clienteIndividuo.Direccion}"+
+                $"\nCUIT: {clienteIndividuo.CUIT}" 
+                );
+        }
 
 
+        private void btnDC_Click(object sender, EventArgs e)
+        {
+            Factura factura = new Factura(
+             "A",
+             "1234567879",
+             new DateTime(2023, 03, 11),
+             "Royal",
+             "Av.SiempreViva 123",
+             "Responsable escrito",
+             "Efectivo",
+             "Es un perrito",
+             (decimal)110.32
+             ) ;
+
+            MessageBox.Show(
+                $"----------FACTURA--------"+
+                $"\nTipo: {factura.Tipo}" +
+                $"\nNumero: {factura.Numero}" +
+                $"\nFecha: {factura.Fecha}" +
+                $"\nCliente: {factura.Cliente}" +
+                $"\nDireccion: {factura.Direccion}" +
+                $"\nCondicion IVA: {factura.CondicionIVA}" +
+                $"\nCondicion Venta: {factura.CondicionVenta}" +
+                $"\nDetalle: {factura.Detalle}" +
+                $"\nTotal: {factura.Total}");
+
+
+            Remito remito = new Remito(
+             "1234567879",
+             new DateTime(2023, 03, 11),
+             "Royal",
+             "Av.SiempreViva 123",
+             "Responsable escrito",
+             "Efectivo",
+             "Es un perrito",
+             new DateTime(2023, 06, 20),
+             (decimal)110.32
+             );
+
+            MessageBox.Show(
+                $"----------REMITO--------"+
+                $"\nNumero: {remito.Numero}" +
+                $"\nFecha: {remito.Fecha}" +
+                $"\nCliente: {remito.Cliente}" +
+                $"\nDireccion: {remito.Direccion}" +
+                $"\nCondicion IVA: {remito.CondicionIVA}" +
+                $"\nCondicion Venta: {remito.CondicionVenta}" +
+                $"\nFecha de entrega: {remito.FechaEntrega}" +
+                $"\nDetalle: {remito.Detalle}" +
+                $"\nTotal: {remito.Total}");
+        }
     }
 }
